@@ -12,3 +12,7 @@ $ zip function.zip bootstrap
 - [Grafana ダッシュボード作成ハンズオン](https://github.com/classmethod/grafana_dashboard_handson/blob/main/docs/handson-guide.md)
 - [Postman モックサーバーを使って Grafana（Infinity プラグイン）の動作検証を行う](https://qiita.com/yankee/items/69e5fb4c5b1d79606b35)
 - [(YouTube) Grafana Dashboard using JSON Data and Grafana Inifinity Plugin](https://www.youtube.com/watch?v=vAoR83g6CE4&t=299s)
+
+## QuickSight Athena DynamoDB
+
+- [QuickSight で DynamoDB のデータを可視化するためのフェデレーテッドクエリ用 Lambda を選択できない](https://community.amazonquicksight.com/t/quicksight-dynamodb-lambda/44402)

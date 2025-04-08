@@ -16,3 +16,32 @@ $ zip function.zip bootstrap
 ## QuickSight Athena DynamoDB
 
 - [QuickSight で DynamoDB のデータを可視化するためのフェデレーテッドクエリ用 Lambda を選択できない](https://community.amazonquicksight.com/t/quicksight-dynamodb-lambda/44402)
+
+QuickSight のデフォルトロールに以下のポリシーを追加する
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "lambda:InvokeFunction",
+      "Resource": "arn:aws:lambda:<リージョン>:<アカウントID>:function:<Lambda関数名>"
+    }
+  ]
+}
+```
+
+QuickSight からの SQL 例
+
+```sql
+SELECT
+    pk,
+    format_datetime(from_iso8601_timestamp(sk), 'yyyy-MM-dd HH:mm:ss') as sk,
+    value
+FROM (
+    SELECT *, ROW_NUMBER() OVER (PARTITION BY pk ORDER BY sk DESC) AS rn
+    FROM "Sample-QuickSight-Athena"."default"."sample-quicksight-athena"
+) AS ranked_data
+WHERE rn = 1
+```
